@@ -14,4 +14,4 @@ print("前三名:", top3)
 passed = [score for score in scores if score >= 60]
 print("及格人數:", len(passed))
 passed_scores = [score for score in scores if score >= average]
-print("平均以上成績:", passed_scores)
+print("平均以上成績:", passed_scores) 
