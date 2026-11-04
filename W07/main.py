@@ -1,0 +1,52 @@
+# Part 1
+import requests
+ #Hisings park: 57.74677797571942, 11.916012401740666
+url = "https://api.open-meteo.com/v1/forecast"
+params = {
+    "latitude":57.74677797571942,
+    "longitude": 11.916012401740666,
+    "current": (
+        "temperature_2m,"
+        "relative_humidity_2m,"
+        "apparent_temperature,"
+        "wind_speed_10m,"
+        "is_day"
+    ),
+    "timezone": "Asia/Taipei"
+}
+
+# Part 2: 發送 GET 請求
+response = requests.get(
+    url,
+    params=params,
+    timeout=10
+)
+# 檢查 HTTP 回應狀態
+response.raise_for_status()
+
+# Part 3
+data = response.json()
+current = data["current"]
+
+time = current["time"]
+temperature = current["temperature_2m"]
+humidity = current["relative_humidity_2m"]
+apparent_temperature = current["apparent_temperature"]
+wind_speed = current["wind_speed_10m"]
+is_day = current["is_day"]
+
+# Part 4
+print("=" * 40)
+print("API Weather Explorer")
+print("=" * 40)
+print(f"資料時間：{time}")
+print(f"目前溫度：{temperature} °C")
+print(f"相對濕度：{humidity} %")
+print(f"體感溫度：{apparent_temperature} °C")
+print(f"風速：{wind_speed} km/h")
+# print 區塊
+print(f"白天/夜晚: {is_day}")
+print("=" * 40)
+print("白天"if is_day else"夜晚")
+
+
