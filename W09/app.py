@@ -9,9 +9,9 @@ topic = st.text_input("感興趣的資訊主題")
 st.write("Python Web App開發")
 if st.button("建立我的學習名片"):
     if name.strip() == "" or topic.strip() == "":
-        st.warning("請先輸入完整資訊！")
+        st.warning("⚠️請先輸入完整資訊！")
     else:
-        st.success("學習名片建立完成！")
+        st.success("✅學習名片建立完成！")
         st.write("### 我的學習名片")
         st.write("姓名：", name)
         st.write("興趣主題：", topic)
